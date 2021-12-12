@@ -22,6 +22,7 @@ type ReportOption struct {
 	IgnoreUnfixed bool
 	ExitCode      int
 	IgnorePolicy  string
+	ExcludedDataSourcesFile    string
 
 	// these variables are not exported
 	vulnType       string
@@ -50,6 +51,7 @@ func NewReportOption(c *cli.Context) ReportOption {
 		IgnoreFile:     c.String("ignorefile"),
 		IgnoreUnfixed:  c.Bool("ignore-unfixed"),
 		ExitCode:       c.Int("exit-code"),
+		ExcludedDataSourcesFile:     c.String("excluded-data-sources-file"),
 	}
 }
 

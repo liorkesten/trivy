@@ -351,6 +351,7 @@ func TestClient_Filter(t *testing.T) {
 		ignoreUnfixed bool
 		ignoreFile    string
 		policyFile    string
+		excludedDataSourcesFile    string
 	}
 	tests := []struct {
 		name               string
@@ -754,7 +755,7 @@ func TestClient_Filter(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			c := Client{}
 			gotVulns, gotMisconfSummary, gotMisconfs, err := c.Filter(context.Background(), tt.args.vulns, tt.args.misconfs,
-				tt.args.severities, tt.args.ignoreUnfixed, false, tt.args.ignoreFile, tt.args.policyFile)
+				tt.args.severities, tt.args.ignoreUnfixed, false, tt.args.ignoreFile, tt.args.policyFile, tt.args.excludedDataSourcesFile)
 			require.NoError(t, err)
 			assert.Equal(t, tt.wantVulns, gotVulns)
 			assert.Equal(t, tt.wantMisconfSummary, gotMisconfSummary)
